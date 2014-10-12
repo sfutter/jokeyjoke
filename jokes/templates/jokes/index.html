@@ -1,0 +1,18 @@
+{% if latest_joke_list %}
+    <table>
+    	<tr>
+        	<td>Joke</td>
+        	<td>Likes</td>
+        	<td>Published Date</td>
+        </tr>
+    {% for joke in latest_joke_list %}
+        <tr>
+        	<td><a href="{% url 'jokes:detail' joke.id %}">{{ joke.joke }}</a></td>
+        	<td><a href="{% url 'jokes:like' joke.id %}">{{ joke.likes }}</a></td>
+        	<td>{{ joke.pub_date }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No jokes are available.</p>
+{% endif %}
